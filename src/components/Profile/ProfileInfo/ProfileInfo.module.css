@@ -1,0 +1,59 @@
+.cover {
+  width: 100%;
+}
+.coverImg {
+  width: 100%;
+  max-width: 1200px;
+  max-height: 350px;
+  object-fit: cover;
+}
+.container {
+}
+.descriptionContainer {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 10px;
+  grid-gap: 15px;
+}
+.avatarContainer {
+  align-self: auto;
+  justify-self: center;
+  padding: 20px;
+}
+.avatarImg {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: 10px solid #fff;
+}
+
+.bioContainer {
+  display: grid;
+  padding: 20px;
+}
+.bioText {
+  font-size: 1em;
+  color: #6d6e71;
+}
+.bioName {
+  color: #27aae1;
+  display: inline-block;
+  margin-right: 10px;
+}
+.bioPersonalInfo {
+  color: #27aae1;
+}
+.bioDate {
+
+}
+.bioPersonalInformation {
+
+}
+.workExperience {
+  margin-bottom: 20px;
+}
+.workDate {
+  font-style: italic;
+  font-size: 0.8em;
+  text-transform: capitalize;
+}

@@ -1,0 +1,77 @@
+.postsBlock {
+  padding: 10px;
+}
+.postsHeader {
+  color: #27aae1;
+}
+.posts {
+  margin-top: 10px;
+}
+.formContainer {
+  display: grid;
+  grid-template-columns: 1fr 70px 8fr;
+  grid-gap: 15px;
+}
+.textareaContainer {
+  align-self: center;
+}
+.buttonContainer {
+  align-self: center;
+}
+.postTextarea {
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 1em;
+  line-height: 150%;
+  font-family: sans-serif;
+  outline: none;
+  min-width: 20em;
+  min-height: 3em;
+  height: 3em;
+  scrollbar-color: #E4E4E4 #ffffff;
+  scrollbar-width: thin;
+  max-width: 600px;
+}
+.postTextArea::-webkit-scrollbar {
+  width: 5px;
+  background-color: #ffffff;
+}
+.postTextArea::-webkit-scrollbar-thumb {
+  background-color: #E4E4E4;
+  /* border-radius: 1em; */
+  box-shadow: inset 1px 1px 10px #f3faf7;
+}
+.postTextarea:hover {
+  border: 1px solid #ffffff;
+}
+
+.postIcons {
+  align-self: center;
+}
+.postIcon {
+  width: 16px;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+.postIcon:hover {
+  filter: drop-shadow(0 0 3px rgba(34,0,0,0.5));
+}
+.postButton {
+  background: #27aae1;
+  padding: 7px 25px;
+  border: none;
+  font-size: 1em;
+  border-radius: 4px;
+  color: #fff;
+  position: relative;
+  font-weight: 600;
+  outline: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+.postButton:hover {
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
