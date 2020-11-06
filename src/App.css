@@ -1,6 +1,11 @@
 * {
   box-sizing: border-box;
 }
+
+body {
+  background-image: linear-gradient(to right top, #b19aa7, #b49ab0, #b39bbc, #ad9dc9, #a1a1d7, #96aade, #8cb3e2, #84bbe4, #92c7df, #a7d1db, #c1d9da, #dae0df);
+}
+
 .appWrapper {
   display: grid;
   grid-template-rows: min-content 1fr;

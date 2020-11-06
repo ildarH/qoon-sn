@@ -1,9 +1,13 @@
+import PropTypes from 'prop-types';
+import React from 'react';
 import style from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) => {
+
+    // console.log('ProfileInfo: ', props);
     let workExperience = props.userInfo.userWorkExperience.map((work) => {
         return (
-            <div className={style.workExperience}>
+            <div className={style.workExperience} key={work.company}>
                 <div><span><strong>{work.company}</strong></span> &mdash; <span>{work.position}</span></div>
                 <div><span className={style.workDate}>{work.yearStart}</span> &ndash; <span className={style.workDate}>{work.yearFinish}</span></div>
             </div>
@@ -35,6 +39,20 @@ const ProfileInfo = (props) => {
             </div>
         </div>
     )
+};
+
+ProfileInfo.propTypes = {
+    userInfo: PropTypes.object,
+    userName: PropTypes.string,
+    userAvatarUrl: PropTypes.string,
+    userDateOfBirth: PropTypes.string,
+    userPersonalInformation: PropTypes.string,
+    userPosition: PropTypes.string,
+    userWorkExperience: PropTypes.object,
+    company: PropTypes.string,
+    position: PropTypes.string,
+    yearStart: PropTypes.number,
+    yearFinish: PropTypes.number,
 };
 
 export default ProfileInfo;

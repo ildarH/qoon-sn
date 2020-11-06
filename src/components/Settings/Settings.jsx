@@ -1,4 +1,5 @@
-import style from './Settings.module.css';
+import React from 'react';
+// import style from './Settings.module.css';
 
 const Settings = () => {
     return (

@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import style from './Message.module.css';
 
 const Message = (props) => {
@@ -21,6 +23,13 @@ const Message = (props) => {
             </div>
         </div>
     )
+}
+
+Message.propTypes = {
+    avatarUrl: PropTypes.string,
+    name: PropTypes.string,
+    dialogDate: PropTypes.string,
+    message: PropTypes.string,
 }
 
 export default Message;

@@ -1,5 +1,6 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import style from './FriendPage.module.css'
-// import { NavLink } from 'react-router-dom';
 
 const FriendPage = (props) => {
   return (
@@ -8,5 +9,10 @@ const FriendPage = (props) => {
     </div>
   )
 };
+
+FriendPage.propTypes = {
+  avatarUrl: PropTypes.string,
+  friendName: PropTypes.string
+}
 
 export default FriendPage;

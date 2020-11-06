@@ -1,41 +1,27 @@
 import './App.css';
 import './normalize.css';
 import { Route } from 'react-router-dom';
+import React from 'react';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/Dialogs';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 
-const App = (props) => {
+const App = () => {
   // debugger;
+  // console.log('App: ', props);
   return (
     // <BrowserRouter>
     <div className="appBackground">
       <div className="appWrapper">
         <Header />
-        <Navbar friendsPage={props.appState.friendsPage} />
+        <Navbar />
         <div className="app-wrapper-content">
-          <Route
-            path="/profile"
-            render={() => (
-              <Profile
-                profilePage={props.appState.profilePage}
-                dispatch={props.dispatch}
-              />
-            )}
-          />
-          <Route
-            path="/dialogs"
-            render={() => (
-              <Dialogs
-                messagesPage={props.appState.messagesPage}
-                dispatch={props.dispatch}
-              />
-            )}
-          />
+          <Route path="/profile" render={() => <Profile />} />
+          <Route path="/dialogs" render={() => <DialogsContainer />} />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
           <Route path="/settings" component={Settings} />

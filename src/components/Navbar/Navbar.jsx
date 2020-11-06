@@ -1,13 +1,15 @@
+import React from 'react';
 import style from './Navbar.module.css'
 import Menu from './Menu/Menu';
-import FriendsPage from './FriendsPage/FriendsPage';
+import FriendsPageContainer from './FriendsPage/FriendsPageContainer';
 
-const Navbar = (props) => {
-  // console.log(props);
+const Navbar = () => {
+  // debugger;
+  // console.log('Navbar: ', props);
   return (
     <div className={style.nav}>
       <Menu />
-      <FriendsPage friendsPage={props.friendsPage} />
+      <FriendsPageContainer />
     </div>
   )
 };

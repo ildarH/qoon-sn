@@ -1,4 +1,6 @@
-import style from './Post.module.css'
+import React from 'react';
+import style from './Post.module.css';
+import PropTypes from 'prop-types';
 
 const Post = (props) => {
     return (
@@ -17,5 +19,13 @@ const Post = (props) => {
         </div>
     )
 };
+
+Post.propTypes = {
+    postImgUrl: PropTypes.string,
+    avatarURL: PropTypes.string,
+    userName: PropTypes.string,
+    message: PropTypes.string,
+    likesCount: PropTypes.string,
+}
 
 export default Post;

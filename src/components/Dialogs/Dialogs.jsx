@@ -1,31 +1,34 @@
+import PropTypes from 'prop-types';
+import { createRef, React } from 'react';
+import DialogItem from './DialogItem/DialogItem';
 import style from './Dialogs.module.css';
-import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message';
-import { React, createRef } from 'react';
-import { addMessageActionCreator, updateNewMessageActionCreator } from '../../redux/messagesReducer';
 
 
 const Dialogs = (props) => {
+    // console.log('Dialogs: ', props);
     // debugger;
     let dialogElements = props.messagesPage.dialogs.map(dialog => <DialogItem
         name={dialog.name}
         id={dialog.id}
         dialogDate={dialog.dialogDate}
-        dialogAvatarUrl={dialog.dialogAvatarUrl} u
-        unreadMessages={dialog.unreadMessages} />);
+        dialogAvatarUrl={dialog.dialogAvatarUrl}
+        unreadMessages={dialog.unreadMessages}
+        key={dialog.id} />);
     let messagesElements = props.messagesPage.messages.map(message => <Message
         message={message.message}
         name={message.name}
         dialogDate={message.dialogDate}
-        avatarUrl={message.avatarUrl} />);
+        avatarUrl={message.avatarUrl}
+        key={message.id} />);
 
     let newMessageElement = createRef();
-    let addMessage = () => {
-        props.dispatch(addMessageActionCreator());
+    let onAddMessage = () => {
+        props.addMessage();
     }
     let onMessageChange = () => {
         let message = newMessageElement.current.value;
-        props.dispatch(updateNewMessageActionCreator(message));
+        props.updateNewMessageText(message);
     }
 
     return (
@@ -39,7 +42,7 @@ const Dialogs = (props) => {
                         <textarea className={style.dialogTextarea}
                             ref={newMessageElement}
                             onChange={onMessageChange}
-                            value={props.messagesPage.newMessageText} />
+                            value={props.newMessageText} />
                     </div>
                     <div className={style.dialogIcons}>
                         <img className={style.dialogIcon} src="img/image_icon.svg" alt="" />
@@ -47,7 +50,7 @@ const Dialogs = (props) => {
                         <img className={style.dialogIcon} src="img/video_icon.svg" alt="" />
                     </div>
                     <div className={style.buttonContainer}>
-                        <button className={style.dialogButton} onClick={addMessage}>Add post</button>
+                        <button className={style.dialogButton} onClick={onAddMessage}>Add post</button>
                     </div>
                 </div>
                 {messagesElements}
@@ -55,5 +58,15 @@ const Dialogs = (props) => {
         </div>
     )
 }
+
+Dialogs.propTypes = {
+    messagesPage: PropTypes.object,
+    dialogs: PropTypes.object,
+    messages: PropTypes.object,
+    newMessageText: PropTypes.string,
+    addMessage: PropTypes.func,
+    updateNewMessageText: PropTypes.func,
+
+};
 
 export default Dialogs;
