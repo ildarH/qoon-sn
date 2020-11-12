@@ -2,11 +2,13 @@
   background: #f8f8f8;
   border-radius: 4px;
   width: 100%;
-  border: 1px solid #f1f2f2;
+  border: 1px solid #cccccc;
   margin-bottom: 20px;
   overflow: hidden;
   position: relative;
-
+}
+.container:hover {
+  border: 1px solid #ffffff;
 }
 .postImgContainer {
   width: 100%;
@@ -36,7 +38,6 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1.5em 1fr;
 }
-
 .header {
   grid-area: u;
   align-self: center;
@@ -47,7 +48,9 @@
   align-self: center;
   justify-self: end;
 }
-.message {grid-area: p;}
+.message {
+  grid-area: p;
+}
 
 .userName {
   text-transform: capitalize;

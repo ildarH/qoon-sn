@@ -1,5 +1,12 @@
 .cover {
   width: 100%;
+  height: 350px;
+  background: url("../../../assets/profile_cover.jpg") 100% 50%;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
 }
 .coverImg {
   width: 100%;
@@ -7,7 +14,26 @@
   max-height: 350px;
   object-fit: cover;
 }
-.container {
+.coverImgBlur {
+  height: 50%;
+  width: 100%;
+  /* backdrop-filter: blur(8px); */
+  background: linear-gradient(0deg, #000000a1 0%, #00000000 100%);
+}
+.coverMenu {
+  background-color: #000000a1;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.coverMenuItem {
+  color: #ffffff;
+  min-width: 200px;
+  text-align: center;
+  cursor: pointer;
 }
 .descriptionContainer {
   display: grid;
@@ -24,16 +50,42 @@
   height: 200px;
   width: 200px;
   border-radius: 50%;
-  border: 10px solid #fff;
+  border: 10px solid #ffffff;
 }
-
+.avatarImg:hover {
+  border: 10px solid #f8f8f8;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
 .bioContainer {
   display: grid;
   padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 4px;
 }
 .bioText {
   font-size: 1em;
   color: #6d6e71;
+  position: relative;
+}
+.bioText::after {
+  content: "";
+  border-bottom: 1px solid #e4e4e4;
+  width: 100%;
+  height: 1px;
+  /* border-top: 1px solid #f1f2f2; */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.bioText:first-child::before {
+  content: "";
+  /* border-bottom: 1px solid #e4e4e4; */
+  width: 100%;
+  height: 1px;
+  border-top: 1px solid #e4e4e4;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .bioName {
   color: #27aae1;
@@ -44,10 +96,8 @@
   color: #27aae1;
 }
 .bioDate {
-
 }
 .bioPersonalInformation {
-
 }
 .workExperience {
   margin-bottom: 20px;

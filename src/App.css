@@ -3,7 +3,21 @@
 }
 
 body {
-  background-image: linear-gradient(to right top, #b19aa7, #b49ab0, #b39bbc, #ad9dc9, #a1a1d7, #96aade, #8cb3e2, #84bbe4, #92c7df, #a7d1db, #c1d9da, #dae0df);
+  background-image: linear-gradient(
+    to right top,
+    #b19aa7,
+    #b49ab0,
+    #b39bbc,
+    #ad9dc9,
+    #a1a1d7,
+    #96aade,
+    #8cb3e2,
+    #84bbe4,
+    #92c7df,
+    #a7d1db,
+    #c1d9da,
+    #dae0df
+  );
 }
 
 .appWrapper {
@@ -17,9 +31,10 @@ body {
   /* background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(8px);
   height: 100vh; */
-	/* width: 50%; */
+  /* width: 50%; */
 }
 .app-wrapper-content {
   grid-area: c;
+  /* background-color: #ffffff; */
   background-color: #e4e4e4;
 }

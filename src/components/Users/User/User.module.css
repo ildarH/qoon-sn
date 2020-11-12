@@ -1,0 +1,60 @@
+.userContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.userAvatar {
+  position: relative;
+  display: flex;
+}
+.userAvatarImg {
+  max-width: 120px;
+  max-height: 120px;
+  border-radius: 50%;
+  border: 5px solid #ffffff;
+}
+.userAvatarImg:hover {
+  border: 5px solid #f8f8f8;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+.button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  /* transform: translateY(-50%); */
+  /* border-top-right-radius: 50%; */
+  /* border-bottom-right-radius: 50%; */
+  outline: none;
+  max-width: 60px;
+  max-height: 120px;
+  height: 100%;
+  width: 50%;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0 100% 100% 0 / 50%;
+  cursor: pointer;
+}
+.button:hover > * {
+  background-color: #64646444;
+  color: #ffffff;
+  /* border: 1px solid #000000a1; */
+}
+.fontAwesomeStyle {
+  color: transparent;
+}
+.fontAwesomeStyle:hover {
+  color: #ffffff;
+}
+.userInfo {
+  /* padding: 10px; */
+  max-width: 50%;
+}
+.userTitle {
+  color: #27aae1;
+  display: inline-block;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.userLocation {
+  min-width: 20%;
+}
