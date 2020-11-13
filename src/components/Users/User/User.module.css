@@ -1,60 +1,111 @@
 .userContainer {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin-bottom: 20px;
+  width: 100%;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #f8f8f8;
 }
-.userAvatar {
-  position: relative;
-  display: flex;
+.userContainer:hover {
+  box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.3);
 }
 .userAvatarImg {
   max-width: 120px;
   max-height: 120px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   border: 5px solid #ffffff;
 }
 .userAvatarImg:hover {
   border: 5px solid #f8f8f8;
-  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.7);
+}
+.userAvatarInitial {
+  top: 50%;
+  left: 50%;
+  display: flex;
+  max-width: 120px;
+  max-height: 120px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 5px solid #ffffff;
+  align-items: center;
+  justify-content: center;
+  font-size: 4em;
+  overflow: hidden;
+  cursor: default;
+  /* font-weight: bold; */
+  font-family: "Lobster";
+  text-shadow: 0px 2px 10px #ffffff;
+  color: #e4e4e4;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: rgb(236, 236, 236);
+  /* box-shadow: inset 0 0 5px #ffffff; */
+}
+.userAvatarInitial:hover {
+  border: 5px solid #f8f8f8;
+  box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.7);
 }
 .button {
-  position: absolute;
-  right: 0;
-  top: 0;
+  /* position: absolute; */
+  /* right: 0; */
+  /* top: 0; */
   /* transform: translateY(-50%); */
   /* border-top-right-radius: 50%; */
   /* border-bottom-right-radius: 50%; */
+  background: #27aae1;
+  padding: 7px 25px;
+  border: none;
+  font-size: 1em;
+  border-radius: 4px;
+  color: #fff;
+  position: relative;
+  font-weight: 600;
   outline: none;
-  max-width: 60px;
-  max-height: 120px;
-  height: 100%;
-  width: 50%;
-  background-color: transparent;
-  border: 1px solid transparent;
-  border-radius: 0 100% 100% 0 / 50%;
+  border-radius: 30px;
   cursor: pointer;
 }
-.button:hover > * {
-  background-color: #64646444;
-  color: #ffffff;
+.button:hover {
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   /* border: 1px solid #000000a1; */
 }
-.fontAwesomeStyle {
-  color: transparent;
-}
-.fontAwesomeStyle:hover {
-  color: #ffffff;
-}
-.userInfo {
-  /* padding: 10px; */
-  max-width: 50%;
-}
 .userTitle {
+  font-family: "Play";
   color: #27aae1;
   display: inline-block;
   margin-block-start: 0;
   margin-block-end: 0;
+  text-transform: capitalize;
+  overflow: hidden;
+  text-overflow: clip;
+  width: 120px;
+  word-break: keep-all;
+}
+.userStatus {
+  text-align: center;
+  max-height: 4em;
+}
+.userStatusP {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  max-height: 3.6em;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-size: 0.8em;
 }
 .userLocation {
   min-width: 20%;
+}
+.userName {
+  text-align: center;
+  margin-bottom: 10px;
 }
