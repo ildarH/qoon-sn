@@ -1,58 +1,19 @@
+import { usersAPI } from "./../api/api";
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
+const TOGGLE_IS_FOLLOWING_IN_PROGRESS = "TOGGLE_IS_FOLLOWING_IN_PROGRESS";
 
 let initialState = {
   users: [],
-  pageSize: 100,
+  pageSize: 10,
   currentPage: 1,
   totalUsersCount: 0,
   isFetching: false,
-
-  // users: [
-  //   {
-  //     id: 1,
-  //     followed: false,
-  //     fullname: 'Finnian Coleman',
-  //     userAvatarUrl: 'img/avatar_8.jpg',
-  //     location: {
-  //       cityName: 'Berlin',
-  //       countryName: 'Germany',
-  //     },
-  //     status: {
-  //       currentStatus: 'Irure labore consequat eu aute tempor aute et eiusmod id. Proident tempor Lorem laboris mollit dolore et laborum qui sint ea sint. Nisi laborum nisi consequat enim sit exercitation voluptate est id esse Lorem.',
-  //     },
-  //   },
-  //   {
-  //     id: 2,
-  //     followed: true,
-  //     fullname: 'Bradlee Barnett',
-  //     userAvatarUrl: 'img/avatar_10.jpg',
-  //     location: {
-  //       cityName: 'Berlin',
-  //       countryName: 'Germany',
-  //     },
-  //     status: {
-  //       currentStatus: 'Culpa in ad culpa officia esse veniam ad sit ullamco ex qui deserunt. Voluptate nulla Lorem sint aliquip proident occaecat exercitation nostrud excepteur nostrud aliquip. Officia voluptate nulla elit Lorem sit proident laborum reprehenderit Lorem nulla mollit minim elit. Enim adipisicing occaecat ullamco quis velit. Qui ipsum laborum nisi amet sit consectetur culpa cupidatat. Do anim ullamco proident consectetur velit consectetur in culpa cupidatat deserunt sunt dolore velit excepteur.',
-  //     },
-  //   },
-  //   {
-  //     id: 3,
-  //     followed: false,
-  //     fullname: 'Hawwa Shepard',
-  //     userAvatarUrl: 'img/avatar_3.jpg',
-  //     location: {
-  //       cityName: 'Berlin',
-  //       countryName: 'Germany',
-  //     },
-  //     status: {
-  //       currentStatus: 'Ad incididunt laborum consequat cillum nostrud aliqua incididunt adipisicing culpa nisi ex dolor. Ad aliqua incididunt consectetur eu in quis reprehenderit fugiat incididunt fugiat qui elit. Sunt eiusmod velit incididunt sit eu proident officia. Nisi aute dolor proident sunt elit cupidatat commodo officia nisi proident do ipsum qui. Dolore duis magna irure occaecat aliquip labore reprehenderit anim culpa aliquip proident ad culpa sunt.',
-  //     },
-  //   },
-  // ],
+  followingInProgress: [],
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -91,26 +52,71 @@ const usersReducer = (state = initialState, action) => {
 
     case TOGGLE_IS_FETCHING:
       return { ...state, isFetching: action.isFetching };
+    case TOGGLE_IS_FOLLOWING_IN_PROGRESS:
+      // debugger; // eslint-disable-line no-debugger
+      return {
+        ...state,
+        followingInProgress: action.isFetching
+          ? [...state.followingInProgress, action.userId]
+          : state.followingInProgress.filter((id) => id != action.userId),
+      };
 
     default:
       return state;
   }
 };
 
-export const followAC = (userId) => ({ type: FOLLOW, userId });
-export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
-export const setUsersAc = (users) => ({ type: SET_USERS, users });
-export const setCurrentPageAc = (currentPage) => ({
+export const followSuccess = (userId) => ({ type: FOLLOW, userId });
+export const unfollowSuccess = (userId) => ({ type: UNFOLLOW, userId });
+export const setUsers = (users) => ({ type: SET_USERS, users });
+export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage,
 });
-export const setTotalUsersCountAc = (totalUsersCount) => ({
+export const setTotalUsersCount = (totalUsersCount) => ({
   type: SET_TOTAL_USERS_COUNT,
   totalUsersCount,
 });
-export const toggleIsFetchingAc = (isFetching) => ({
+export const toggleIsFetching = (isFetching) => ({
   type: TOGGLE_IS_FETCHING,
   isFetching,
 });
+export const toggleFollowingProgress = (isFetching, userId) => ({
+  type: TOGGLE_IS_FOLLOWING_IN_PROGRESS,
+  isFetching,
+  userId,
+});
 
+export const getUsers = (currentPage, pageSize) => {
+  return (dispatch) => {
+    dispatch(toggleIsFetching(true));
+    usersAPI.getUsers(currentPage, pageSize).then((data) => {
+      dispatch(toggleIsFetching(false));
+      dispatch(setUsers(data.items));
+      dispatch(setTotalUsersCount(data.totalCount));
+    });
+  };
+};
+export const follow = (userId) => {
+  return (dispatch) => {
+    dispatch(toggleFollowingProgress(true, userId));
+    usersAPI.follow(userId).then((response) => {
+      if (response.data.resultCode == 0) {
+        dispatch(followSuccess(userId));
+      }
+      dispatch(toggleFollowingProgress(false, userId));
+    });
+  };
+};
+export const unfollow = (userId) => {
+  return (dispatch) => {
+    dispatch(toggleFollowingProgress(true, userId));
+    usersAPI.unfollow(userId).then((response) => {
+      if (response.data.resultCode == 0) {
+        dispatch(followSuccess(userId));
+      }
+      dispatch(toggleFollowingProgress(false, userId));
+    });
+  };
+};
 export default usersReducer;

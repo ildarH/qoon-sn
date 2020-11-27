@@ -4,6 +4,7 @@ import User from "./User/User";
 import style from "./Users.module.css";
 
 let Users = (props) => {
+  console.log("Users: ", props);
   function createPages(pages, pagesCount, currentPage) {
     if (pagesCount > 10) {
       if (currentPage > 5) {
@@ -39,6 +40,7 @@ let Users = (props) => {
       status={user.status}
       unfollow={props.unfollow}
       follow={props.follow}
+      followingInProgress={props.followingInProgress}
     />
   ));
 
@@ -89,4 +91,5 @@ Users.propTypes = {
   users: PropTypes.array,
   unfollow: PropTypes.func,
   follow: PropTypes.func,
+  followingInProgress: PropTypes.array,
 };

@@ -21,4 +21,5 @@
 }
 .pageSelected {
   font-weight: bold;
+  cursor: default;
 }
