@@ -10,8 +10,9 @@ import {
 import Preloader from "./../Common/Preloader/Preloader";
 import Users from "./Users";
 // import { usersAPI } from './../../api/api';
+import { withAuthRedirect } from "./../../hoc/withAuthRedirect";
 
-class UsersAPIContainer extends React.Component {
+class UsersContainer extends React.Component {
   componentDidMount() {
     console.log("componentDidMount props: ", this.props);
     this.props.getUsers(this.props.currentPage, this.props.pageSize);
@@ -66,17 +67,16 @@ let mapStateToProps = (state) => {
   };
 };
 
+let withRedirect = withAuthRedirect(UsersContainer);
+
 export default connect(mapStateToProps, {
   follow,
   unfollow,
   setCurrentPage,
-  // toggleFollowingProgress,
   getUsers,
-})(UsersAPIContainer);
+})(withRedirect);
 
-// export default UsersContainer;
-
-UsersAPIContainer.propTypes = {
+UsersContainer.propTypes = {
   users: PropTypes.array,
   follow: PropTypes.func,
   unfollow: PropTypes.func,

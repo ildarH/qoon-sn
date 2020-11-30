@@ -27,7 +27,7 @@ export const usersAPI = {
     });
   },
   getProfile(userId) {
-    return axiosInstance.get(`profile/` + userId);
+    return axiosInstance.get(`profile/${userId}`);
   },
 };
 export const authAPI = {
